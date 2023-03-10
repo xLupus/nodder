@@ -1,0 +1,63 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="flex flex-1 p-5 justify-center">
+    <div class="container max-w-7xl shadow-xl p-3">
+        <form method="post" >
+            <div class="flex gap-x-9">
+                <div class="flex flex-col max-w-md w-screen">
+                    <label class="font-bold text-lg mb-1">Titulo:</label>
+                    <input type="text" name="title" placeholder="Digite o titulo do artigo"><br>
+                </div>
+    
+                <div class="flex flex-col max-w-xs w-screen">
+                    <label class="font-bold text-lg mb-1">Categoria:</label>
+                    <select name="category">
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+
+            <div class="my-8">
+                <textarea name="content" id="article"  placeholder="Escreva o artigo aqui"></textarea>                
+            </div>
+
+            <div>
+                <h1 class="font-bold text-lg mt-8 mb-3">Tags:</h1>
+
+                <div class="flex gap-4 flex-wrap">
+                    <% tags.forEach(tag => { %>
+                        <div>
+                            <input type="checkbox" name="tags[]" value="<%= tag.id %>" id="<%= tag.name %>" class="peer hidden">
+                            <label for="<%= tag.name %>" class="peer-checked:bg-green-300 block bg-blue-100 text-blue-600 p-2 rounded-xl hover:scale-105"><%= tag.name %></label>
+                        </div>
+                    <% }) %>
+    
+                    <% categories.forEach(tag => { %>
+                        <div>
+                            <input type="checkbox" name="tags[]" value="<%= tag.id %>" id="<%= tag.name %>" class="peer hidden">
+                            <label for="<%= tag.name %>" class="peer-checked:bg-green-300 block bg-blue-100 text-blue-600 p-2 rounded-xl hover:scale-105"><%= tag.name %></label>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+
+            <button type="submit" class="p-3 mt-7 bg-blue-600 text-white rounded-md">Criar Postagem</button>
+        </form>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: "#article",
+        language: "pt_BR",
+        plugins: [
+            'advlist', 'autolink', 'link', 'imagem', 'lists', 'print', 'preview', 'hr', 'searchreplace', 'wordcount', 'fullscreen', 'insertdatetime', 'media', 'save', 'table', 'paste', 'emoticons'
+        ]
+    });
+</script>

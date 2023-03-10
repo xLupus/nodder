@@ -1,0 +1,41 @@
+<%- include('../partials/head') %>
+
+<main class="h-full w-full flex items-center justify-center absolute">
+    <div class="shadow-2xl p-5 w-screen max-w-xl">
+        <div class="flex justify-center mb-3">
+            <a href="/">
+                <img src="/img/icone_logo.svg" alt="Nodder" width="100">
+            </a>
+        </div>
+    
+        <h1 class="text-3xl font-bold">Crie sua conta</h1>
+    
+        <form action="/cadastro" method="POST">
+            <div class="flex flex-col my-3">
+                <label for="">Nome Completo</label>
+                <input type="text" name="name" class="rounded-lg">
+            </div>
+
+            <div class="flex flex-col mb-3">
+                <label for="">E-mail</label>
+                <input type="email" name="email" class="rounded-lg">
+            </div>
+    
+            <div class="flex flex-col mb-3">
+                <label for="">Senha</label>
+                <input type="password" name="password" class="rounded-lg">
+            </div>
+
+            <div class="flex flex-col mb-3">
+                <label for="">Confirme sua senha</label>
+                <input type="password" class="rounded-lg">
+            </div>
+
+            <div class="flex justify-between items-center">
+                <span>Ja tem uma conta? <a href="/login" class="underline italic">Entrar</a></span>
+                <button type="submit" class="w-24 p-2 bg-blue-700 text-white rounded-lg">Cadastrar</button>
+            </div>
+        </form>        
+    </div>
+</main>
+

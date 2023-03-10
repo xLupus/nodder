@@ -1,0 +1,14 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<% posts.forEach(post => { %>
+    <div>
+        <%= post.createdAt %> <br>
+        <%= post.title  %> <br>
+        <%= post.content %> <br>
+        <%= post.User.name %> <br>
+        <%= post.Category.name %> <br>
+    </div>
+<% }) %>
+
+<%- include('../partials/footer') %>
