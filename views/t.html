@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="drop-area">Arraste e solte o arquivo aqui</div>
+
+</body>
+
+<script>
+    const dropArea = document.getElementById("drop-area");
+
+    // Evite o navegador abrir o arquivo quando arrastado para a janela do navegador
+    dropArea.addEventListener("dragover", (event) => {
+        event.preventDefault();
+    });
+
+    // Exibir visualização do arquivo quando solto na área de queda
+    dropArea.addEventListener("drop", (event) => {
+        event.preventDefault();
+        const file = event.dataTransfer.files[0];
+    
+        // Criar um objeto URL do arquivo arrastado
+        const fileURL = URL.createObjectURL(file);
+    
+        // Criar um elemento <img> e definir sua propriedade "src" para o objeto URL
+        const preview = document.createElement("img");
+        preview.src = fileURL;
+    
+        // Adicionar o elemento <img> à área de queda
+        dropArea.appendChild(preview);
+    });
+
+</script>
+</html>

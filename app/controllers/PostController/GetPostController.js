@@ -1,18 +1,36 @@
 const {Post, Category, User} = require('../../models/index');
+const { Op, Sequelize } = require('sequelize');
 
 class GetPostController{
-    index(req, res){
-        Post.findAll({include: [Category, User]}).then(posts => {
-            res.render('post/index', {posts})
-        })
+     async index(req, res){
+        let query = req.query.search;
+        let posts;
+
+        if(query){
+            posts = await Post.findAll({
+                where: {title: {[Op.substring]: query}},
+                attributes: {exclude: ['content']},
+                include: [User, Category]
+            });  
+        }else{
+            posts = await Post.findAll({
+                attributes: {exclude: ['content']},
+                include: [User, Category]
+            });
+        }
+       
+        res.render('post/index', {posts, query})
     }
 
-    show(req, res){
-        
-    }
+     async show(req, res){
+        let slug = req.params.slug;
 
-    search(req, res){
-        
+        Post.findOne({
+            where: {slug: slug},
+            include: [Category, User],
+        }).then(post => {
+            post ? res.render('post/show', {post}) : res.redirect('/postagens')
+        });
     }
 }
 

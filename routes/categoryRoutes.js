@@ -7,5 +7,6 @@ let router = Router()
 router.get('/categorias', getCategoryController.index);
 router.get('/categoria/criar', CreateCategoryController.create)
 router.post('/categoria/criar', CreateCategoryController.store)
+router.get('/categoria/:category/posts', getCategoryController.show)
 
 module.exports = router;

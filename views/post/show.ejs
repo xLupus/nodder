@@ -1,0 +1,53 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="flex flex-1">
+    <section class="container max-w-screen-lg mx-auto ">
+        <article class="border shadow-lg p-3">
+            <div class="flex justify-between border-b-2 py-4">
+                <a href="/categoria/<%= post.Category.id %>/posts" class="block bg-sky-600 text-white px-3 py-2 rounded-lg"><%= post.Category.name %></a>
+                <span><%= post.createdAt %></span>
+            </div>
+    
+            <div class="py-4">
+                <h1 class="font-bold text-4xl"><%= post.title %></h1>
+                <p class="font-semibold text-xl"><%= post.subtitle %></p>
+            </div>
+      
+            <div class="border-b-2">
+                <%- post.content %> <br>
+            </div>
+
+            <span class="block mt-4 mb-2"><span class="font-bold">Criado por:</span> <%= post.User.name %></span>
+        </article>
+
+        <div class="flex gap-4 flex-wrap border shadow-lg p-3 my-6">
+            <a href="#" class="block bg-blue-100 text-blue-600 p-2 rounded-xl hover:scale-105">São Paulo</a>
+            <a href="#" class="block bg-blue-100 text-blue-600 p-2 rounded-xl hover:scale-105">Alimentação Vegana</a>
+            <a href="#" class="block bg-blue-100 text-blue-600 p-2 rounded-xl hover:scale-105">Crime</a>
+            <a href="#" class="block bg-blue-100 text-blue-600 p-2 rounded-xl hover:scale-105">São Paulo</a>
+            <a href="#" class="block bg-blue-100 text-blue-600 p-2 rounded-xl hover:scale-105">Esportes</a>
+            <a href="#" class="block bg-blue-100 text-blue-600 p-2 rounded-xl hover:scale-105">Esportes</a>
+        </div>
+    
+        <section class="border shadow-lg p-3">
+            <h1 class="font-semibold text-2xl">Comentarios</h1>
+            <span>Ocultar essa sessao se o usuario nao estiver logado </span>
+
+            <div class="flex items-center gap-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-gray-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                  
+                <span class="block text-lg">User Firstname Lastname </span>
+            </div>
+
+            <form action="" class="flex flex-col">
+                <textarea name="comment" id="" cols="30" rows="10" class="border-gray-400 w-full resize-none my-4 h-44"></textarea>
+                <button type="submit" class="self-end w-24 p-2 bg-blue-700 text-white rounded-lg">Comentar</button>
+            </form>
+        </section> 
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

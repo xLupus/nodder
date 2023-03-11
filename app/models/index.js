@@ -39,8 +39,16 @@ const Post = conn.define('Post', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    subtitle: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     content: {
         type: DataTypes.TEXT,
+        allowNull: false
+    },
+    poster: {
+        type: DataTypes.STRING,
         allowNull: false
     },
     slug: {
@@ -76,25 +84,23 @@ const Tag = conn.define('Tag', {
 
 const PostTag = conn.define('PostTag', {});
 
-User.hasOne(Role);
-User.hasMany(Comment);
-User.hasMany(Post)
+User.hasOne(Role, {onDelete: 'cascade'} );
+User.hasMany(Comment, {onDelete: 'cascade'});
+User.hasMany(Post, {onDelete: 'cascade'})
 
-Role.hasMany(User);
+Comment.belongsTo(Post, {onDelete: 'cascade'});
+Comment.belongsTo(User, {onDelete: 'cascade'});
 
-Comment.belongsTo(Post);
-Comment.belongsTo(User);
+Category.hasMany(Post, {onDelete: 'cascade'});
 
-Category.hasMany(Post);
+Tag.belongsToMany(Post, {through: PostTag, onDelete: 'cascade'});
 
-Tag.belongsToMany(Post, {through: PostTag });
+Post.belongsToMany(Tag, {through: PostTag, onDelete: 'cascade'});
+Post.hasMany(Comment, {onDelete: 'cascade'});
+Post.belongsTo(User, {onDelete: 'cascade'});
+Post.belongsTo(Category, {onDelete: 'cascade'});
 
-Post.belongsToMany(Tag, {through: PostTag});
-Post.hasMany(Comment);
-Post.belongsTo(User);
-Post.belongsTo(Category);
-
-//conn.sync().then(() => console.log('Models sincronizadas')).catch(err => console.log(err));
+//conn.sync({force: true}).then(() => console.log('Models sincronizadas')).catch(err => console.log(err));
 
 module.exports = {
     User,

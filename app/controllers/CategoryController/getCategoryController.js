@@ -1,4 +1,4 @@
-const { Category, Tag } = require('../../models/index');
+const {Post, User, Category, Tag } = require('../../models/index');
 
 class getCategoryController {
     async index(req, res){
@@ -8,8 +8,16 @@ class getCategoryController {
         res.render('category/index', {categories, tags})
     }
 
-    create(req, res){
-        res.render('category/create');
+    show(req, res){
+        let {category} = req.params;
+
+        
+        Post.findAll({
+            where: {CategoryId: category}
+        }).then(posts => {
+            res.render('category/show',{posts})
+
+        });
     }
 }
 

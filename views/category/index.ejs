@@ -7,7 +7,7 @@
 
         <div class="flex gap-6 flex-wrap">
             <% categories.forEach(category => {%>
-                <a href="#" class="flex flex-col flex-1 hover:scale-105 min-w-[280px] max-w-[300px] min-h-[170px] max-h-44 shadow-xl border">
+                <a href="/categoria/<%=category.id%>/posts" class="flex flex-col flex-1 hover:scale-105 min-w-[280px] max-w-[300px] min-h-[170px] max-h-44 shadow-xl border">
                     <div class="border-b-2 mb-4 py-3 text-center">
                         <span class="font-bold group-hover:"><%= category.name %></span>
                     </div>
