@@ -1,21 +1,21 @@
-<%- include('../../partials/head') %>
-<%- include('../../partials/header') %>
+<%- include('../../partials/admin/head') %>
+<%- include('../../partials/admin/sidenav') %>
 
 <main class="flex flex-1 p-5 justify-center">
-    <div class="container max-w-7xl shadow-xl p-3">
+    <div class="container max-w-5xl shadow-xl p-3">
         <form method="post" enctype="multipart/form-data">
             <div class="flex flex-col w-full mb-6">
                 <label class="font-bold text-lg mb-1">Titulo:</label>
-                <input type="text" name="title" placeholder="Digite o titulo do artigo"><br>
+                <input type="text" name="title" placeholder="Digite o titulo do artigo" class="opacity-70"><br>
             </div>
 
             <div class="flex flex-col w-full mb-6">
                 <label class="font-bold text-lg mb-1">Subtitulo:</label>
-                <input type="text" name="subtitle" placeholder="Digite o titulo do artigo"><br>
+                <input type="text" name="subtitle" placeholder="Digite o titulo do artigo" class="opacity-70"><br>
             </div>
 
             <!-- Upload de arquivo-->
-            <div class="mb-5 max-w-2xl">
+            <div class="mb-5">
                 <label class="font-bold text-lg mb-1">Capa do artigo</label>
                 <div id="drop-area" class="mt-2 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
                     <div class="space-y-1 text-center">
@@ -46,7 +46,7 @@
              <!-- Categorias -->
              <div class="flex items-center max-w-xs w-screen">
                 <label class="font-bold text-lg mb-1 mr-4">Categoria:</label>
-                <select name="category" class="">
+                <select name="category" class="opacity-70">
                     <% categories.forEach(category=> { %>
                         <option value="<%= category.id %>">
                             <%= category.name %>
@@ -66,8 +66,6 @@
 
     </div>
 </main>
-
-<%- include('../../partials/footer') %>
 
 <script src="/public/tinymce/tinymce.min.js"></script>
 <script>

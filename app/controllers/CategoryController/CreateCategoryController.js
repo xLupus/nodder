@@ -3,7 +3,7 @@ const slugify = require('slugify');
 
 class CreateCategoryController {
     create(req, res){
-        res.render('category/create');
+        res.render('admin/categories/create');
     }
 
     store(req, res){

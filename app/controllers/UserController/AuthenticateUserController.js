@@ -1,5 +1,6 @@
 const { User } = require('../../models/index');
 const bcrypt = require('bcrypt');
+const validator = require('validator')
 
 class AuthenticateUserController {
     create(req, res) {
@@ -8,6 +9,9 @@ class AuthenticateUserController {
 
     authenticate(req, res) {
         const {email, password} = req.body;
+
+        let emailIsValid = validator.isEmpty(email);
+        let passwordIsValid = validator.isEmpty(password);
 
         User.findOne({where: {email: email}}).then(user => {
             if(user && bcrypt.compareSync(password, user.password)){
@@ -19,7 +23,7 @@ class AuthenticateUserController {
 
                 res.redirect('/')
             }else{
-                res.redirect('/login')
+                res.render('user/login', {message: "Credenciais Invalidas"})
             }            
         })
     }

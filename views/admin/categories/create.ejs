@@ -1,25 +1,33 @@
-<%- include('../partials/head') %>
-<%- include('../partials/header') %>
+<%- include('../../partials/admin/head') %>
+<%- include('../../partials/admin/sidenav') %>
 
-<main class="flex justify-center">
-    <div class="w-screen max-w-lg shadow-xl p-5">
-        <h1 class="text-3xl mb-4">Cadastro de categoria</h1>
+<main class="flex flex-1 flex-col ">
+    <div class="h-16 bg-red-300">
+        agfadongfoia
+    </div>
 
-        <form action="/categoria/criar" method="post" class="flex flex-col">
-            <div class="flex flex-col mb-3">
-                <label for="" class="mb-1">Nome da categoria</label>
-                <input type="text" name="name">
-            </div>
+    <div class="flex flex-1 justify-center items-center">
+        <div class="w-screen max-w-lg border rounded-xl shadow-xl p-5">
+            <h1 class="text-3xl mb-4">Cadastro de categoria</h1>
     
-            <div class="flex flex-col mb-3">
-                <label for="" class="mb-1">Descrição</label>
-                <textarea name="description" id="" cols="30" rows="10" class="resize-none overflow-y-auto"></textarea>
-            </div>
-    
-            <button class="py-4 bg-blue-600 text-white rounded-lg">Criar Categoria</button>
-        </form>
+            <form action="/categoria/criar" method="post" class="flex flex-col">
+                <div class="flex flex-col mb-3">
+                    <label for="" class="mb-1">Nome da categoria</label>
+                    <input type="text" name="name">
+                </div>
+        
+                <div class="flex flex-col mb-3">
+                    <label for="" class="mb-1">Descrição</label>
+                    <textarea name="description" id="" cols="30" rows="10" class="resize-none overflow-y-auto"></textarea>
+                </div>
+        
+                <button class="py-4 bg-blue-600 text-white rounded-lg">Criar Categoria</button>
+            </form>
+        </div>
     </div>
 
 </main>
 
-<%- include('../partials/footer') %>
+
+
+

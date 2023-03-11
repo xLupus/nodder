@@ -9,16 +9,11 @@ class CreatePostController{
         let tags = await Tag.findAll();
 
         res.render('admin/posts/create',{categories, tags})
-       // res.render('admin/posts/create', );
     }
 
     async store(req, res){
         let {title, subtitle, category, content} = req.body;
         let poster = req.file;
-
-        //let fileext = path.extname(req.file.filename)
-
-        //res.send(title,subtitle,category,content)
 
         if(title && subtitle && category && content && poster){
             let post = await Post.findOne({where: {title: title}});
