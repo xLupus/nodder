@@ -1,0 +1,36 @@
+<%- include('../../partials/admin/head') %>
+<%- include('../../partials/admin/sidenav') %>
+
+<main class="flex flex-1 p-5 justify-center">
+    <div class="w-screen max-w-3xl p-3">
+        <form method="POST" class="mb-4">
+            <label for="">Nome da Tag</label>
+            <input type="text" name="tagName">
+            <button type="submit" class="bg-sky-600 text-white p-3 rounded-lg">Criar</button>
+        </form>
+
+        <table class="w-full bg-pink-500 border-collapse border border-slate-500">
+            <thead class="bg-blue-300">
+                <th class="border border-slate-600">ID</th>
+                <th class="border border-slate-600">Nome</th>
+                <th class="border border-slate-600">Ações</th>
+            </thead>
+            <tbody class="bg-green-300">
+                <% if (JSON.stringify(tags) === '{}') { %>
+                 <tr>
+                    <td colspan="3" class="text-center border border-slate-600">Nenhuma Tag Cadastrada</td>
+                 </tr>
+                <% } else { %>
+                    <% tags.forEach(tag => { %>
+                        <tr>
+                           <td class="border border-slate-600"><%= tag.id %></td>
+                           <td class="border border-slate-600"><%= tag.name %></td>
+                           <td class="border border-slate-600">Editar</td>
+                           <td class="border border-slate-600">Excluir</td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</main>

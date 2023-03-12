@@ -17,18 +17,18 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 30000000 } //se secure for true n funciona se n tiver https
+    cookie: { secure: false, maxAge: 3000000 } //se secure for true n funciona se n tiver https
 }))
 app.use(flash());
 
-app.get('/', (req, res) => {res.render('home')});
-app.get('/sobre', (req, res) => {res.render('about')});
+app.get('/', (req, res) => { res.render('home') });
+app.get('/sobre', (req, res) => { res.render('about') });
 
 app.use(userRoutes);
 app.use(adminRoutes);
 app.use(postRoutes);
 app.use(categoryRoutes);
 
-app.use((req, res) => {res.render('page404')});
+app.use((req, res) => { res.render('page404') });
 
 app.listen(8000, () => console.log("Servidor Rodando"));

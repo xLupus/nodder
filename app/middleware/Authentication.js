@@ -6,7 +6,7 @@ function canAccessIfAuthenticated(req, res, next) {
     }
 }
 
-function cantAccessIfAuthenticated(req, res, next){
+function cannotAccessIfAuthenticated(req, res, next){
     if(req.session.user){
         res.redirect('back');
     } else {
@@ -17,5 +17,5 @@ function cantAccessIfAuthenticated(req, res, next){
 
 module.exports = {
     canAccessIfAuthenticated,
-    cantAccessIfAuthenticated
+    cannotAccessIfAuthenticated
 };

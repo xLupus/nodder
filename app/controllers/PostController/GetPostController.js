@@ -4,21 +4,16 @@ const { Op, Sequelize } = require('sequelize');
 class GetPostController{
      async index(req, res){
         let query = req.query.search;
-        let posts;
-
-        if(query){
-            posts = await Post.findAll({
-                where: {title: {[Op.substring]: query}},
-                attributes: {exclude: ['content']},
-                include: [User, Category]
-            });  
-        }else{
-            posts = await Post.findAll({
-                attributes: {exclude: ['content']},
-                include: [User, Category]
-            });
+        let postsPerPage = req.query.postsPerPage ?? 1;
+        let conditions = {
+            attributes: {exclude: ['content']},
+            include: [User, Category]
         }
-       
+
+        if(query) {conditions.where = {title: {[Op.substring]: query}};}
+
+        let posts = await Post.findAll(conditions);
+
         res.render('post/index', {posts, query})
     }
 
@@ -32,6 +27,8 @@ class GetPostController{
             post ? res.render('post/show', {post}) : res.redirect('/postagens')
         });
     }
+
+
 }
 
 module.exports = new GetPostController;
