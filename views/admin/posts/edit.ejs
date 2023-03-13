@@ -1,2 +1,95 @@
 <%- include('../../partials/admin/head') %>
 <%- include('../../partials/admin/sidenav') %>
+
+<main class="flex flex-1 p-5 justify-center">
+    <div class="container max-w-5xl shadow-xl p-3">
+        <form method="post" enctype="multipart/form-data">
+            <div class="flex flex-col w-full mb-6">
+                <label class="font-bold text-lg mb-1">Titulo:</label>
+                <input type="text" name="title" placeholder="Digite o titulo do artigo" class="opacity-70" value="<%= post.title %>">
+            </div>
+
+            <div class="flex flex-col w-full mb-6">
+                <label class="font-bold text-lg mb-1">Subtitulo:</label>
+                <input type="text" name="subtitle" placeholder="Digite o titulo do artigo" class="opacity-70" value="<%= post.subtitle %>">
+            </div>
+
+            <!-- Upload de arquivo-->
+            <!-- todo - Achar um jeito de colocar a imagem no input file -->
+            <div class="mb-5">
+                <label class="font-bold text-lg mb-1">Capa do artigo</label>
+                <div id="drop-area" class="mt-2 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                    <div class="space-y-1 text-center">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
+                            viewBox="0 0 48 48" aria-hidden="true">
+                            <path
+                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <div class="flex text-sm text-gray-600">
+                            <input id="file-upload" name="poster" type="file" class="font-medium text-indigo-600 file:bg-indigo-600 file:text-white file:p-2 file:rounded-lg file:border-0">
+                        </div>
+                        <p class="text-xs text-gray-500">PNG, JPG, WEBP</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim Upload de arquivo-->
+
+            <!-- Text Area-->
+            <div class="mb-5">
+                <label class="font-bold text-lg mb-1">Conteudo do Artigo</label>
+                <textarea name="content" id="article" placeholder="Escreva o artigo aqui"></textarea>
+            </div>
+            <!-- Fim da Text Area-->
+
+            <!-- Categorias -->
+            <div class="flex items-center max-w-xs w-screen">
+                <label class="font-bold text-lg mb-1 mr-4">Categoria:</label>
+                <select name="category" class="opacity-70">
+                    <% categories.forEach(category => { %>
+                        <% if (post.Category.id == category.id) { %>
+                            <option value="<%= category.id %>" selected><%= category.name %></option>                        
+                        <% } else { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>  
+                        <% } %>
+                    <% }) %>
+                </select>
+            </div>
+            <!-- Fim das Categorias -->
+
+
+            <!-- Tags -->
+            <span class="font-bold text-lg mb-1 mr-4">Tags</span>
+
+            <div class="flex gap-4 flex-wrap">
+                <span>Amanha eu tento kkk</span>
+                
+            </div>
+            <!-- Fim da Tags-->
+
+            <button type="submit" class="p-3 mt-7 bg-blue-600 text-white rounded-md bg-gre">Criar Postagem</button>
+        </form>
+
+        <div class="hidden" id="content">
+            <%- post.content %>
+        </div>
+    </div>
+</main>
+
+<script src="/public/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: "#article",
+        language: "pt_BR",
+        plugins: [
+            'advlist', 'autolink', 'link', 'imagem', 'lists', 'print', 'preview', 'hr', 'searchreplace', 'wordcount', 'fullscreen', 'insertdatetime', 'media', 'save', 'table', 'paste', 'emoticons'
+        ],
+        init_instance_callback: () => {
+            let postContent = document.getElementById('content')
+            tinymce.get("article").setContent( postContent.innerHTML );
+        }
+    });
+</script>
+
+

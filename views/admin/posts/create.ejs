@@ -1,7 +1,7 @@
 <%- include('../../partials/admin/head') %>
 <%- include('../../partials/admin/sidenav') %>
 
-<main class="flex flex-1 p-5 justify-center">
+<main class="flex flex-1 pt-24 p-5 justify-center">
     <div class="container max-w-5xl shadow-xl p-3">
         <form method="post" enctype="multipart/form-data">
             <div class="flex flex-col w-full mb-6">
@@ -58,12 +58,20 @@
 
 
             <!-- Tags-->
+            <span class="font-bold text-lg mb-1 mr-4">Tags</span>
 
+            <div class="flex gap-4 flex-wrap">
+                <% tags.forEach(tag => { %>
+                    <div>
+                        <input type="checkbox" name="tags[]" id="tag<%=tag.id%>" class="peer hidden" value="<%=tag.id %>">
+                        <label for="tag<%=tag.id%>" class="block bg-blue-100 text-blue-600 p-2 rounded-xl cursor-pointer peer-checked:bg-green-300 peer-checked:text-green-700 "><%= tag.name %></label>
+                    </div>
+                <% }) %>
+            </div>
             <!-- Fim da Tags-->
 
-            <button type="submit" class="p-3 mt-7 bg-blue-600 text-white rounded-md">Criar Postagem</button>
+            <button type="submit" class="p-3 mt-7 bg-blue-600 text-white rounded-md bg-gre">Criar Postagem</button>
         </form>
-
     </div>
 </main>
 
@@ -76,22 +84,6 @@
             'advlist', 'autolink', 'link', 'imagem', 'lists', 'print', 'preview', 'hr', 'searchreplace', 'wordcount', 'fullscreen', 'insertdatetime', 'media', 'save', 'table', 'paste', 'emoticons'
         ]
     });
-
-    function readImage() {
-        if (this.files && this.files[0]) {
-            let file = new FileReader();
-
-            file.onload = function(e) {
-                let img = document.getElementById("img-preview")
-                img.src = e.target.result;
-                img.style.width = '270px';
-                img.style.height = '360px';
-            };    
-
-            file.readAsDataURL(this.files[0]);
-        }
-    }
-
 </script>
 
 

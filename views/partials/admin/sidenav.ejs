@@ -1,13 +1,19 @@
-<nav class="flex flex-col justify-between border-r-4 shadow-lg h-screen w-full max-w-xs px-5 ">
-    <ul class="mt-10 ">
-        <li><a href="/">Voltar para o site</a></li>
-        <li><a href="/admin">Dashboard</a></li>
-        <li><a href="/admin/tags">Tags</a></li>
-        <li><a href="#">Posts</a></li>
-        <li><a href="#">Categorias</a></li>
-        <li><a href="/admin/postagem/criar">+ Criar novo post</a></li>
-        <li><a href="/admin/categoria/criar">+ Criar nova categoria</a></li>
-    </ul>
+<nav class="flex flex-col justify-between border-r-4 shadow-lg h-screen w-full max-w-xs px-5 pt-5">
+    <div class="flex flex-col items-center">
+        <a href="/">
+            <img src="/public/img/icone_logo.svg" alt="Nodder" class="h-28" >
+        </a>
+
+        <ul class="flex flex-col justify-between h-80 w-full mt-10">
+            <li class="border-b-2 pb-3"><a href="/admin">Dashboard</a></li>
+            <li class="border-b-2 pb-3"><a href="/admin/usuarios">Usuarios</a></li>
+            <li class="border-b-2 pb-3"><a href="/admin/postagens">Posts</a></li>
+            <li class="border-b-2 pb-3"><a href="/admin/categorias">Categorias</a></li>
+            <li class="border-b-2 pb-3"><a href="/admin/tags">Tags</a></li>
+            <li class="border-b-2 pb-3"><a href="#">Cargos</a></li>
+            <li class="border-b-2 pb-3"><a href="#">Permissões</a></li>
+        </ul>
+    </div>
     
     <div class="py-4 w-full border-t-2 justify-end">
         <a href="/logout">Logout</a>

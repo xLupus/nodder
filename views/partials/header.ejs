@@ -1,20 +1,19 @@
 <header class="w-full border-b-2 px-2 py-4 mb-12">
     <div class="container flex justify-between items-center mx-auto">
-
         <a href="/"> 
-            <img src="/public/img/logo.svg" alt="Nodder" width="130">
+            <img src="/public/img/logo.svg" alt="Nodder" class="h-12">
         </a>
 
         <nav>
-            <ul class="w-screen max-w-xs flex justify-between">
+            <ul class="max-w-xs w-64 flex justify-between">
                 <li><a href="/postagens">Postagens</a></li>
                 <li><a href="/categorias">Categorias</a></li>
                 <li><a href="/sobre">Sobre</a></li>
             </ul>
         </nav>
-
-        <form action="/postagens" class="flex items-center bg-gray-100 border-2 rounded-md ">
-            <input type="search" name="search" class="w-screen max-w-[500px] bg-gray-100 border-0 outline-none rounded-l-2 focus:border-none focus:shadow-none focus:outline-none">
+        
+        <form action="/postagens" class="flex items-center border-2 rounded-md">
+            <input type="search" name="search" class="w-screen max-w-[500px]  border-0 outline-none rounded-l-2">
     
             <button class="p-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
@@ -23,12 +22,10 @@
             </button>
         </form>
 
-        <span class="ml-8">
-            <a href="/login" class="underline">Entrar</a> 
-            / 
-            <a href="/cadastro" class="underline">Cadastrar</a>
-            /
-            <a href="/admin">Admin</a>
-        </span>
+        <ul class="flex ml-8">
+            <li class="mr-2"><a href="/login" class="underline">Login</a></li>
+            <li class="mr-2"><a href="/cadastro" class="underline">Cadastro</a></li>
+            <li><a href="/admin" class="underline">Admin</a></li>
+        </ul>
     </div>
 </header>

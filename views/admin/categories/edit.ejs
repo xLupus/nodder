@@ -6,18 +6,20 @@
         <div class="w-screen max-w-lg border rounded-xl shadow-xl p-5">
             <h1 class="text-3xl mb-4">Cadastro de categoria</h1>
     
-            <form action="/admin/categoria/criar" method="post" class="flex flex-col">
+            <form action="/admin/categoria/editar" method="post" class="flex flex-col">
+                <input type="hidden" name="id" value="<%= category.id %>">
+
                 <div class="flex flex-col mb-3">
                     <label for="" class="mb-1">Nome da categoria</label>
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="<%= category.name %>">
                 </div>
         
                 <div class="flex flex-col mb-3">
-                    <label for="" class="mb-1">Descrição</label>
-                    <textarea name="description" id="" cols="30" rows="10" class="resize-none overflow-y-auto"></textarea>
+                    <label for="description" class="mb-1">Descrição</label>
+                    <textarea name="description" id="description" rows="10" class="resize-none overflow-y-auto"><%= category.description %></textarea>
                 </div>
-        
-                <button class="py-4 bg-blue-600 text-white rounded-lg">Criar Categoria</button>
+
+                <button class="py-4 bg-blue-600 text-white rounded-lg">Editar Categoria</button>
             </form>
         </div>
     </div>

@@ -94,8 +94,8 @@ Comment.belongsTo(User, {onDelete: 'cascade'});
 Category.hasMany(Post, {onDelete: 'cascade'});
 
 Tag.belongsToMany(Post, {through: PostTag, onDelete: 'cascade'});
-
 Post.belongsToMany(Tag, {through: PostTag, onDelete: 'cascade'});
+
 Post.hasMany(Comment, {onDelete: 'cascade'});
 Post.belongsTo(User, {onDelete: 'cascade'});
 Post.belongsTo(Category, {onDelete: 'cascade'});

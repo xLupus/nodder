@@ -6,20 +6,25 @@ class CreateCategoryController {
         res.render('admin/categories/create');
     }
 
-    store(req, res){
+    async store(req, res){
         let {name, description} = req.body;
 
-        Category.findOne({where: {name: name}}).then(category => {
+        try {
+            let category = await Category.findOne({where: {name: name.trim()}});
+
             if(!category){
                 Category.create({
-                    name: name,
-                    description: description,
-                    slug: slugify(name, {lower: true})
-                });                
+                    name: name.trim(),
+                    description: description.trim(),
+                    slug: slugify(name.trim(), {lower: true})
+                });    
             }
-        })
-
-        res.redirect('/categoria/criar')
+            // todo - Implementar mensagens de feedback
+    
+            res.redirect('/admin/categoria/criar')
+        } catch (error) {
+            res.send(error)
+        }
     }
 }
 

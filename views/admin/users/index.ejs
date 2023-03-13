@@ -4,31 +4,31 @@
 <main class="flex flex-1 justify-center pt-24">
     <div class="w-screen max-w-6xl shadow-xl border h-fit p-5">
         <div class="float-right mt-6 mb-10">
-            <a href="/admin/postagem/criar" class="bg-sky-600 text-white p-3 rounded-lg">+ Novo post</a>
+            <a href="/admin/postagem/criar" class="bg-sky-600 text-white p-3 rounded-lg">+ Novo Usuario</a>
         </div>
 
         <table class="w-full table-auto border">
             <thead>
                 <tr>
                     <th class="border p-2 w-16">ID</th>
-                    <th class="border p-2">Titulo</th>
-                    <th class="border p-2 max-w-lg">Subtitulo</th>
-                    <th class="border p-2">Slug</th>
-                    <th class="border p-2 w-32">Categoria</th>
+                    <th class="border p-2">Nome</th>
+                    <th class="border p-2 max-w-lg">Email</th>
+                    <th class="border p-2">Cargo</th>
+                    <th class="border p-2 w-32">Permissões</th>
                     <th class="border p-2 w-28">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <% posts.forEach(post => { %>
+                <% users.forEach(user => { %>
                     <tr>
-                        <td class="text-center border p-2">#<%= post.id %></td>
-                        <td class="border p-2"><%= post.title %></td>
-                        <td class="border p-2 truncate max-w-xs"><%= post.subtitle %></td>
-                        <td class="border p-2"><%= post.slug %></td>
-                        <td class="border p-2"><%= post.Category.name %></td>
+                        <td class="text-center border p-2">#<%= user.id %></td>
+                        <td class="border p-2"><%= user.name %></td>
+                        <td class="border p-2 truncate max-w-xs"><%= user.email %></td>
+                        <td class="border p-2">Role</td>
+                        <td class="border p-2">Permissoes</td>
                         <td class="border p-2">
                             <div class="flex flex-1 justify-center items-center">
-                                <a href="/admin/postagem/editar/<%= post.id %>" class="mr-3">
+                                <a href="#" class="mr-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                     </svg>                                  

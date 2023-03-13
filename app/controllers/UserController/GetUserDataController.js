@@ -1,11 +1,13 @@
-const { User } = require('../../models/index');
+const { User, Role } = require('../../models/index');
 
 class GetUserDataController{
-    create(req, res){
-        res.render('user/register')
-    }
+    async adminIndex(req, res){
+        const users = await User.findAll({
+            include: [Role]
+        });
 
-    store(req, res){}
+        res.render('admin/users/index', {users})
+    }
 }
 
 module.exports = new GetUserDataController;

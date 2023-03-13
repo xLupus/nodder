@@ -14,6 +14,9 @@ function cannotAccessIfAuthenticated(req, res, next){
     }
 }
 
+function unsuredAuthenticated(req, res, next){
+    
+}
 
 module.exports = {
     canAccessIfAuthenticated,
